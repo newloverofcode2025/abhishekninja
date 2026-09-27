@@ -1,422 +1,494 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abhishek Banerjee - Portfolio & Content Hub</title>
+  <title>Abhishek Banerjee — AI Evaluation & Systems Content</title>
 
-  <!-- SEO & OpenGraph Social Preview Meta Tags -->
-  <meta name="description" content="Technical communications and AI evaluation professional specializing in LLM output quality assessment, prompt engineering, RAG pipelines, and developer documentation." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://abhishekninja.netlify.app" />
+  <!-- OpenGraph / SEO -->
+  <meta name="description" content="Technical Communications & AI Evaluation Professional specializing in LLMs, RAG Architectures, Multi-Agent Systems, and Developer Technical Strategy." />
   <meta property="og:title" content="Abhishek Banerjee | AI Evaluation & Technical Content Architect" />
-  <meta property="og:description" content="Explore technical writing, LLM evaluation frameworks, multi-agent systems, and enterprise RAG architecture deep dives." />
+  <meta property="og:description" content="Explore AI evaluation frameworks, RAG pipeline mechanics, and enterprise software documentation." />
   <meta property="og:image" content="https://abhishekninja.netlify.app/Bio%202.png" />
-
+  <meta property="og:url" content="https://abhishekninja.netlify.app" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://abhishekninja.netlify.app" />
-  <meta name="twitter:title" content="Abhishek Banerjee | AI Evaluation & Technical Content Architect" />
-  <meta name="twitter:description" content="Technical communications and AI evaluation professional specializing in LLMs, RAG, and developer documentation." />
-  <meta name="twitter:image" content="https://abhishekninja.netlify.app/Bio%202.png" />
 
+  <!-- Fonts: Inter & JetBrains Mono for 2026 Dev Vibe -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-color: #0f172a;
-      --card-bg: #1e293b;
+      --bg-base: #080d1a;
+      --bg-surface: rgba(15, 23, 42, 0.75);
+      --bg-card: rgba(30, 41, 59, 0.5);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(56, 189, 248, 0.3);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --accent: #38bdf8;
-      --accent-hover: #0284c7;
-      --border-color: #334155;
-      --tag-bg: #0f172a;
-      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --accent-purple: #c084fc;
+      --font-mono: 'JetBrains Mono', monospace;
+      --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.1);
     }
 
     [data-theme="light"] {
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
+      --bg-base: #f1f5f9;
+      --bg-surface: rgba(255, 255, 255, 0.85);
+      --bg-card: rgba(255, 255, 255, 0.7);
+      --border: rgba(0, 0, 0, 0.08);
+      --border-glow: rgba(2, 132, 199, 0.3);
       --text-main: #0f172a;
       --text-muted: #64748b;
       --accent: #0284c7;
-      --accent-hover: #0369a1;
-      --border-color: #e2e8f0;
-      --tag-bg: #f1f5f9;
-      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      --accent-glow: rgba(2, 132, 199, 0.15);
+      --accent-purple: #9333ea;
+      --shadow-glow: 0 10px 25px rgba(2, 132, 199, 0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-color);
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-base);
       color: var(--text-main);
-      transition: background-color 0.3s, color 0.3s;
       line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(192, 132, 252, 0.05) 0%, transparent 40%);
+      background-attachment: fixed;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
+      padding: 2.5rem 1.5rem;
     }
 
-    /* Header Navigation */
+    /* Top Navigation Header */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
       margin-bottom: 2.5rem;
     }
 
-    .btn {
-      background: var(--card-bg);
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 500;
-      display: inline-flex;
+    .brand {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+      display: flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-      text-decoration: none;
-      font-size: 0.9rem;
+      gap: 8px;
     }
 
-    .btn:hover {
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-toggle {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+
+    .btn-toggle:hover {
       border-color: var(--accent);
       color: var(--accent);
     }
 
-    .btn-cta {
-      background: var(--accent);
-      color: #0f172a;
-      border: 1px solid var(--accent);
-      font-weight: 600;
-    }
-
-    .btn-cta:hover {
-      background: var(--accent-hover);
-      color: #ffffff;
-      border-color: var(--accent-hover);
-    }
-
-    /* Hero Profile Card */
-    .profile-card {
+    /* Hero Bento Card */
+    .hero-bento {
       display: grid;
-      grid-template-columns: 130px 1fr;
+      grid-template-columns: 140px 1fr;
       gap: 2rem;
       align-items: center;
-      background: var(--card-bg);
-      padding: 2.2rem;
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-      margin-bottom: 2.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-glow);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bento::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-purple), transparent);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
     }
 
     .profile-img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
       object-fit: cover;
-      border: 3px solid var(--accent);
+      border: 1px solid var(--border-glow);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .status-indicator {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #22c55e;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .profile-info h1 {
-      font-size: 1.9rem;
+      font-size: 2.2rem;
       font-weight: 700;
+      letter-spacing: -0.5px;
       margin-bottom: 0.2rem;
     }
 
     .profile-info h2 {
-      font-size: 1.05rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
       color: var(--accent);
+      margin-bottom: 1rem;
       font-weight: 500;
-      margin-bottom: 0.8rem;
     }
 
     .profile-info p {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
     }
 
-    .social-links {
+    .actions-group {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
-    .social-badge {
+    .btn-primary {
+      background: var(--accent);
+      color: #0f172a;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.88rem;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      background: var(--tag-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: border-color 0.2s;
+      box-shadow: 0 0 15px var(--accent-glow);
+      transition: all 0.2s;
     }
 
-    .social-badge:hover {
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px var(--accent-glow);
+    }
+
+    .badge-link {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .badge-link:hover {
       border-color: var(--accent);
       color: var(--accent);
+      background: var(--bg-surface);
     }
 
-    .skills-row {
+    .tech-stack-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .skill-tag {
-      font-size: 0.75rem;
-      background: var(--tag-bg);
-      border: 1px solid var(--border-color);
+    .pill {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
       padding: 0.2rem 0.6rem;
       border-radius: 4px;
-      color: var(--text-muted);
     }
 
-    /* Section Titles */
+    /* Section Headers */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
     .section-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    /* Featured Section Grid */
-    .featured-section {
-      margin-bottom: 3rem;
+    .section-title::before {
+      content: '//';
+      color: var(--accent);
     }
 
+    /* Bento Grid for Featured Deep Dives */
     .featured-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.5rem;
+      margin-bottom: 3.5rem;
     }
 
-    .featured-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.5rem;
+    .bento-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, border-color 0.2s;
     }
 
-    .featured-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent);
+    .bento-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glow);
     }
 
-    .pinned-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
+    .bento-tag {
+      font-family: var(--font-mono);
       font-size: 0.7rem;
-      font-weight: 600;
-      background: rgba(56, 189, 248, 0.15);
+      text-transform: uppercase;
       color: var(--accent);
+      background: var(--accent-glow);
       padding: 0.2rem 0.6rem;
-      border-radius: 12px;
-      border: 1px solid var(--accent);
+      border-radius: 4px;
+      width: fit-content;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border-glow);
     }
 
-    .featured-card h3 {
-      font-size: 1.1rem;
+    .bento-card h3 {
+      font-size: 1.15rem;
       font-weight: 600;
       margin-bottom: 0.6rem;
-      padding-right: 4rem;
       line-height: 1.4;
     }
 
-    .featured-card p {
+    .bento-card p {
       color: var(--text-muted);
       font-size: 0.88rem;
       margin-bottom: 1.2rem;
     }
 
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 1rem;
-    }
-
-    .card-tag {
-      font-size: 0.7rem;
-      background: var(--tag-bg);
-      border: 1px solid var(--border-color);
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      color: var(--text-muted);
-    }
-
-    .featured-footer {
-      border-top: 1px solid var(--border-color);
-      padding-top: 0.8rem;
+    .bento-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
     }
 
-    /* Content Area & Filters */
-    .content-header {
+    .link-arrow {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .link-arrow:hover { text-decoration: underline; }
+
+    /* Controls & Feed Filter */
+    .feed-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
     }
 
-    .filter-tabs {
+    .filter-group {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
-      padding-bottom: 4px;
     }
 
-    .tab-btn {
-      background: transparent;
-      border: 1px solid var(--border-color);
+    .filter-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 0.4rem 0.9rem;
+      padding: 0.35rem 0.85rem;
       border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
       cursor: pointer;
-      font-size: 0.85rem;
-      white-space: nowrap;
       transition: all 0.2s;
     }
 
-    .tab-btn.active, .tab-btn:hover {
+    .filter-btn.active, .filter-btn:hover {
       background: var(--accent);
-      color: #fff;
+      color: #0f172a;
       border-color: var(--accent);
+      font-weight: 600;
     }
 
-    .search-box {
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      background: var(--card-bg);
+    .search-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
       color: var(--text-main);
-      font-size: 0.9rem;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
       outline: none;
       min-width: 220px;
     }
 
-    /* Dynamic RSS Grid Layout */
+    .search-input:focus {
+      border-color: var(--accent);
+    }
+
+    /* RSS Grid */
     .articles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.5rem;
     }
 
-    .article-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
+    .feed-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.4rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, border-color 0.2s;
+      transition: all 0.2s;
     }
 
-    .article-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent);
+    .feed-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
     }
 
-    .platform-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
+    .platform-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
       text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
+      padding: 0.15rem 0.5rem;
       border-radius: 4px;
       margin-bottom: 0.8rem;
+      width: fit-content;
+      font-weight: 600;
     }
 
-    .platform-devto { background: #24292e; color: #fff; }
-    .platform-medium { background: #000; color: #fff; }
+    .platform-devto { background: #171717; color: #38bdf8; border: 1px solid rgba(56,189,248,0.2); }
+    .platform-medium { background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
     .platform-substack { background: #ff6719; color: #fff; }
     .platform-hashnode { background: #2962ff; color: #fff; }
 
-    .article-title {
-      font-size: 1.1rem;
+    .feed-title {
+      font-size: 1.05rem;
       font-weight: 600;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       line-height: 1.4;
     }
 
-    .article-snippet {
+    .feed-snippet {
       color: var(--text-muted);
-      font-size: 0.88rem;
-      margin-bottom: 1.2rem;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    .article-footer {
+    .feed-meta {
+      border-top: 1px solid var(--border);
+      padding-top: 0.7rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
       color: var(--text-muted);
-      border-top: 1px solid var(--border-color);
-      padding-top: 0.8rem;
     }
-
-    .read-more {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .read-more:hover { text-decoration: underline; }
 
     .loader {
       grid-column: 1 / -1;
       text-align: center;
       padding: 3rem;
+      font-family: var(--font-mono);
       color: var(--text-muted);
     }
 
     @media (max-width: 768px) {
-      .profile-card {
+      .hero-bento {
         grid-template-columns: 1fr;
         text-align: center;
       }
-      .profile-img { margin: 0 auto; }
-      .social-links { justify-content: center; }
-      .skills-row { justify-content: center; }
-      .content-header { flex-direction: column; align-items: stretch; }
+      .avatar-wrapper { margin: 0 auto; }
+      .actions-group, .tech-stack-pills { justify-content: center; }
+      .feed-controls { flex-direction: column; align-items: stretch; }
     }
   </style>
 </head>
@@ -424,111 +496,99 @@
 
   <div class="container">
     <header>
-      <div style="font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px;">AB.</div>
-      <div>
-        <button class="btn" id="themeToggle">🌙 Theme</button>
+      <div class="brand"><span class="brand-dot"></span> ABHISHEK.BANERJEE</div>
+      <div class="nav-actions">
+        <button class="btn-toggle" id="themeToggle">🌙 TOGGLE THEME</button>
       </div>
     </header>
 
-    <!-- Profile Hero Area -->
-    <section class="profile-card">
-      <img src="Bio 2.png" alt="Abhishek Banerjee" class="profile-img" />
+    <!-- 2026 Sleek Bento Profile Banner -->
+    <section class="hero-bento">
+      <div class="avatar-wrapper">
+        <img src="Bio 2.png" alt="Abhishek Banerjee" class="profile-img" />
+        <div class="status-indicator">● ACTIVE</div>
+      </div>
+      
       <div class="profile-info">
         <h1>Abhishek Banerjee</h1>
-        <h2>Technical Communications & AI Evaluation Professional</h2>
-        <p>10+ years of enterprise operations experience, specializing in LLM output evaluation, prompt engineering, RAG architectures, and developer-focused documentation.</p>
-
-        <div class="social-links">
-          <!-- Primary Contact CTA -->
-          <a href="mailto:abhishekninja2018@gmail.com" class="btn btn-cta">✉ Contact Me</a>
-
-          <a href="https://x.com/AvishekBanzzov" target="_blank" class="social-badge">𝕏 Twitter</a>
-          <a href="https://www.linkedin.com/in/abhishekninja/" target="_blank" class="social-badge">LinkedIn</a>
-          <a href="https://hiddenmindofabhishekbanerjee.substack.com" target="_blank" class="social-badge">Substack</a>
-          <a href="https://medium.com/@abhishekninja2018" target="_blank" class="social-badge">Medium</a>
-          <a href="https://deeper-in-tech.hashnode.dev/" target="_blank" class="social-badge">Hashnode</a>
-          <a href="https://dev.to/abhishekninja_writer" target="_blank" class="social-badge">Dev.to</a>
+        <h2>// AI Evaluation & Technical Systems Content Architect</h2>
+        <p>10+ years of enterprise operations experience, specializing in LLM output evaluation, prompt engineering, RAG architecture mechanics, and developer documentation.</p>
+        
+        <div class="actions-group">
+          <a href="mailto:abhishekninja2018@gmail.com" class="btn-primary">✉ Direct Contact</a>
+          <a href="https://x.com/AvishekBanzzov" target="_blank" class="badge-link">𝕏 Twitter</a>
+          <a href="https://www.linkedin.com/in/abhishekninja/" target="_blank" class="badge-link">LinkedIn</a>
+          <a href="https://dev.to/abhishekninja_writer" target="_blank" class="badge-link">Dev.to</a>
+          <a href="https://medium.com/@abhishekninja2018" target="_blank" class="badge-link">Medium</a>
+          <a href="https://hiddenmindofabhishekbanerjee.substack.com" target="_blank" class="badge-link">Substack</a>
+          <a href="https://deeper-in-tech.hashnode.dev/" target="_blank" class="badge-link">Hashnode</a>
         </div>
 
-        <div class="skills-row">
-          <span class="skill-tag">LLM Evaluation</span>
-          <span class="skill-tag">RAG Pipelines</span>
-          <span class="skill-tag">Prompt Engineering</span>
-          <span class="skill-tag">Technical Writing</span>
-          <span class="skill-tag">Workday / Salesforce / Oracle</span>
+        <div class="tech-stack-pills">
+          <span class="pill">LLM Evaluation</span>
+          <span class="pill">RAG Pipelines</span>
+          <span class="pill">Prompt Engineering</span>
+          <span class="pill">Developer Docs</span>
+          <span class="pill">Workday / Salesforce</span>
         </div>
       </div>
     </section>
 
-    <!-- Pinned Featured Technical Deep Dives -->
-    <section class="featured-section">
-      <h2 class="section-title">📌 Featured Architectural Deep Dives</h2>
-      <div class="featured-grid">
-
-        <div class="featured-card">
-          <span class="pinned-badge">Featured</span>
-          <h3>Defensive API Design & Edge-Case Mechanics</h3>
-          <p>An in-depth analysis on evaluating system boundaries, error boundaries, and defensive API strategies for reliable software integrations.</p>
-          <div class="card-tags">
-            <span class="card-tag">API Design</span>
-            <span class="card-tag">Edge Cases</span>
-            <span class="card-tag">System Specs</span>
-          </div>
-          <div class="featured-footer">
-            <span class="platform-tag platform-medium">Medium</span>
-            <a href="https://medium.com/@abhishekninja2018" target="_blank" class="read-more">Read Breakdown →</a>
-          </div>
-        </div>
-
-        <div class="featured-card">
-          <span class="pinned-badge">Featured</span>
-          <h3>Enterprise RAG Pipelines & Chunking Mechanics</h3>
-          <p>Evaluating document retrieval strategies, context relevance, hallucination reduction, and vector search parameters in enterprise environments.</p>
-          <div class="card-tags">
-            <span class="card-tag">RAG</span>
-            <span class="card-tag">LLM Evaluation</span>
-            <span class="card-tag">Azure AI</span>
-          </div>
-          <div class="featured-footer">
-            <span class="platform-tag platform-hashnode">Hashnode</span>
-            <a href="https://deeper-in-tech.hashnode.dev/" target="_blank" class="read-more">Read Breakdown →</a>
-          </div>
-        </div>
-
-        <div class="featured-card">
-          <span class="pinned-badge">Featured</span>
-          <h3>Multi-Agent PR Tribunals & Orchestration</h3>
-          <p>Exploring multi-agent decision frameworks, automated code review workflows, and context allocation using LangChain and AutoGen.</p>
-          <div class="card-tags">
-            <span class="card-tag">AI Agents</span>
-            <span class="card-tag">LangChain</span>
-            <span class="card-tag">AutoGen</span>
-          </div>
-          <div class="featured-footer">
-            <span class="platform-tag platform-devto">Dev.to</span>
-            <a href="https://dev.to/abhishekninja_writer" target="_blank" class="read-more">Read Breakdown →</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Live Dynamic Content Feed -->
+    <!-- Pinned Architecture Deep Dives -->
     <section>
-      <div class="content-header">
-        <h2 class="section-title">📰 All Recent Publications</h2>
-        <div class="filter-tabs">
-          <button class="tab-btn active" data-platform="all">All Content</button>
-          <button class="tab-btn" data-platform="substack">Substack</button>
-          <button class="tab-btn" data-platform="medium">Medium</button>
-          <button class="tab-btn" data-platform="hashnode">Hashnode</button>
-          <button class="tab-btn" data-platform="devto">Dev.to</button>
+      <div class="section-head">
+        <h2 class="section-title">FEATURED_ARCHITECTURAL_DEEP_DIVES</h2>
+      </div>
+      
+      <div class="featured-grid">
+        <div class="bento-card">
+          <span class="bento-tag">SYSTEMS_API</span>
+          <h3>Defensive API Design & Edge-Case Mechanics</h3>
+          <p>Evaluating system boundaries, failure mechanics, and defensive API patterns across complex distributed services.</p>
+          <div class="bento-footer">
+            <span style="color: var(--text-muted)">Medium</span>
+            <a href="https://medium.com/@abhishekninja2018" target="_blank" class="link-arrow">Read Spec →</a>
+          </div>
         </div>
-        <input type="text" id="searchInput" class="search-box" placeholder="Search publications..." />
+
+        <div class="bento-card">
+          <span class="bento-tag">MULTI_AGENT</span>
+          <h3>Multi-Agent PR Tribunals & Orchestration</h3>
+          <p>Evaluating multi-agent decision workflows, automated PR review tribunals, and context routing with LangChain and AutoGen.</p>
+          <div class="bento-footer">
+            <span style="color: var(--text-muted)">Dev.to</span>
+            <a href="https://dev.to/abhishekninja_writer" target="_blank" class="link-arrow">Read Spec →</a>
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <span class="bento-tag">LLM_EVAL</span>
+          <h3>Enterprise RAG Pipelines & Context Retrieval</h3>
+          <p>Evaluating chunking strategies, vector retrieval accuracy, hallucination scoring, and grounding in enterprise knowledge bases.</p>
+          <div class="bento-footer">
+            <span style="color: var(--text-muted)">Hashnode</span>
+            <a href="https://deeper-in-tech.hashnode.dev/" target="_blank" class="link-arrow">Read Spec →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Dynamic Feed Section -->
+    <section>
+      <div class="feed-controls">
+        <div class="section-title">ALL_PUBLICATIONS</div>
+        <div class="filter-group">
+          <button class="filter-btn active" data-platform="all">ALL</button>
+          <button class="filter-btn" data-platform="devto">DEV.TO</button>
+          <button class="filter-btn" data-platform="medium">MEDIUM</button>
+          <button class="filter-btn" data-platform="substack">SUBSTACK</button>
+          <button class="filter-btn" data-platform="hashnode">HASHNODE</button>
+        </div>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search keywords..." />
       </div>
 
       <div id="articlesGrid" class="articles-grid">
-        <div class="loader">Fetching latest articles across platforms...</div>
+        <div class="loader">SYNCING_PUBLICATIONS_FEED...</div>
       </div>
     </section>
   </div>
@@ -555,7 +615,7 @@
             title: item.title,
             link: item.link,
             pubDate: new Date(item.pubDate),
-            snippet: item.description.replace(/<[^>]*>?/gm, '').substring(0, 140) + '...',
+            snippet: item.description.replace(/<[^>]*>?/gm, '').substring(0, 130) + '...',
             platform: platform
           }));
         }
@@ -584,7 +644,7 @@
 
     async function loadAllFeeds() {
       const grid = document.getElementById('articlesGrid');
-      grid.innerHTML = '<div class="loader">Syncing latest articles from your platforms...</div>';
+      grid.innerHTML = '<div class="loader">FETCHING_LIVE_RSS_FEEDS...</div>';
 
       const devtoPosts = fetchDevTo(CONFIG.handles.devto);
       const mediumPosts = fetchRSS(`https://medium.com/feed/@${CONFIG.handles.medium}`, 'medium');
@@ -608,28 +668,28 @@
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = '<div class="loader">No publications found matching your criteria.</div>';
+        grid.innerHTML = '<div class="loader">NO_MATCHING_PUBLICATIONS_FOUND</div>';
         return;
       }
 
       grid.innerHTML = filtered.map(post => `
-        <div class="article-card">
+        <div class="feed-card">
           <div>
-            <span class="platform-tag platform-${post.platform}">${post.platform}</span>
-            <h3 class="article-title">${post.title}</h3>
-            <p class="article-snippet">${post.snippet}</p>
+            <span class="platform-badge platform-${post.platform}">${post.platform}</span>
+            <h3 class="feed-title">${post.title}</h3>
+            <p class="feed-snippet">${post.snippet}</p>
           </div>
-          <div class="article-footer">
+          <div class="feed-meta">
             <span>${post.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-            <a href="${post.link}" target="_blank" class="read-more">Read Article →</a>
+            <a href="${post.link}" target="_blank" class="link-arrow">Read →</a>
           </div>
         </div>
       `).join('');
     }
 
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         e.target.classList.add('active');
         currentFilter = e.target.dataset.platform;
         renderPosts();
@@ -640,10 +700,10 @@
 
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
-      const currentTheme = document.body.getAttribute('data-theme');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      document.body.setAttribute('data-theme', newTheme);
-      themeToggle.textContent = newTheme === 'light' ? '🌙 Dark' : '☀️ Light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      themeToggle.textContent = newTheme === 'light' ? '🌙 TOGGLE THEME' : '☀️ TOGGLE THEME';
     });
 
     loadAllFeeds();
